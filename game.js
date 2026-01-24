@@ -1,4 +1,6 @@
 // ==== NARUTO ROSTER (gekürzt – du kannst die große Liste einsetzen) ====
+let lobbyCode = Math.random().toString(36).substring(2, 8).toUpperCase();
+let player = "A"; // A oder B
 const roster = [
   "Naruto Uzumaki","Sasuke Uchiha","Sakura Haruno","Kakashi Hatake",
   "Itachi Uchiha","Madara Uchiha","Obito Uchiha","Jiraiya",
