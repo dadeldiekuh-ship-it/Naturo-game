@@ -1,11 +1,40 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<title>Meine Seite</title>
+<meta charset="UTF-8" />
+<title>Naruto Draft Fight</title>
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<h1>🔥 Läuft über GitHub Pages</h1>
-<p>Domain kommt gleich 😎</p>
+
+
+<h1>🔥 Naruto Draft Fight (2 Spieler)</h1>
+
+
+<div class="controls">
+<button onclick="drawChar()">Draw Character</button>
+<button onclick="reroll()">Reroll (1x Match)</button>
+</div>
+
+
+<h2>Dein aktueller Charakter</h2>
+<div id="currentChar">—</div>
+
+
+<h2>Dein Team</h2>
+<div class="slots" id="slots"></div>
+
+
+<div class="controls">
+<button onclick="readyUp()">Ready</button>
+<button onclick="copyFightPrompt()">Start Fight (Copy Prompt)</button>
+</div>
+
+
+<h2>Prompt für ChatGPT</h2>
+<textarea id="promptBox" readonly></textarea>
+
+
+<script src="game.js"></script>
 </body>
 </html>
