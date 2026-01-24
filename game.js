@@ -106,3 +106,5 @@ Gib aus:
 }
 
 renderSlots();
+document.getElementById("lobbyCode").innerText = lobbyCode;
+document.getElementById("playerId").innerText = player;
