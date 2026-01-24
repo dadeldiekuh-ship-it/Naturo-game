@@ -1,49 +1,66 @@
-<h2>Lobby</h2>
-<p>
-  Lobby-Code: <b id="lobbyCode"></b><br>
-  Du bist Spieler: <b id="playerId"></b>
-</p>
-
-<textarea id="syncBox" placeholder="Game State hier einfügen"></textarea><br>
-<button onclick="exportState()">State kopieren</button>
-<button onclick="importState()">State einfügen</button>
-<hr>
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8" />
-<title>Naruto Draft Fight</title>
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Naruto Draft Fight (Local 2P)</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
+<h1>🔥 Naruto Draft Fight (2 Spieler – lokal)</h1>
 
-<h1>🔥 Naruto Draft Fight (2 Spieler)</h1>
-
-
-<div class="controls">
-<button onclick="drawChar()">Draw Character</button>
-<button onclick="reroll()">Reroll (1x Match)</button>
+<div class="topbar">
+  <div><b>Turn:</b> <span id="turnLabel">Team A</span></div>
+  <div><b>Pool übrig:</b> <span id="poolLeft">0</span></div>
+  <div class="btnrow">
+    <button id="resetBtn">Reset Match</button>
+    <button id="copyPromptBtn" disabled>Start Fight (Prompt kopieren)</button>
+  </div>
 </div>
 
+<div class="teams">
+  <!-- TEAM A -->
+  <section class="team">
+    <header class="teamHeader">
+      <h2>Team A</h2>
+      <div class="small">
+        Reroll: <span id="rerollA">✅</span> | Draw: <span id="drawA">—</span>
+      </div>
+    </header>
 
-<h2>Dein aktueller Charakter</h2>
-<div id="currentChar">—</div>
+    <div class="controls">
+      <button id="drawBtnA">Draw</button>
+      <button id="rerollBtnA">Reroll (1x)</button>
+      <span class="hint">Assign: Slot anklicken</span>
+    </div>
 
+    <div class="slots" id="slotsA"></div>
+    <button id="readyBtnA" class="readyBtn">Ready</button>
+  </section>
 
-<h2>Dein Team</h2>
-<div class="slots" id="slots"></div>
+  <!-- TEAM B -->
+  <section class="team">
+    <header class="teamHeader">
+      <h2>Team B</h2>
+      <div class="small">
+        Reroll: <span id="rerollB">✅</span> | Draw: <span id="drawB">—</span>
+      </div>
+    </header>
 
+    <div class="controls">
+      <button id="drawBtnB">Draw</button>
+      <button id="rerollBtnB">Reroll (1x)</button>
+      <span class="hint">Assign: Slot anklicken</span>
+    </div>
 
-<div class="controls">
-<button onclick="readyUp()">Ready</button>
-<button onclick="copyFightPrompt()">Start Fight (Copy Prompt)</button>
+    <div class="slots" id="slotsB"></div>
+    <button id="readyBtnB" class="readyBtn">Ready</button>
+  </section>
 </div>
 
-
-<h2>Prompt für ChatGPT</h2>
-<textarea id="promptBox" readonly></textarea>
-
+<h2>Prompt Vorschau</h2>
+<textarea id="promptBox" readonly placeholder="Wird aktiv, wenn beide Teams voll & ready sind."></textarea>
 
 <script src="game.js"></script>
 </body>
