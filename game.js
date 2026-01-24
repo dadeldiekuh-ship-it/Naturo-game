@@ -56,8 +56,10 @@ function drawChar() {
 
 function reroll() {
   if (!currentChar || rerollUsed) return;
+
   rerollUsed = true;
-  drawChar();
+  currentChar = null;        // 🔥 wichtig
+  drawChar();                // neuer Draw
 }
 
 function assignChar(slot) {
