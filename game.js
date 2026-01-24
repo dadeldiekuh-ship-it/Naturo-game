@@ -1,83 +1,18 @@
 // ======= ROSTER =======
-// Du kannst hier deine große Naruto-Liste einfügen.
-// Wichtig: Nur Naruto/Shippuden, Boruto nein, Edo nein (Regel im Prompt).
+// Hier kannst du deine große Liste einsetzen.
+// Wichtig: keine Duplikate nötig, Pool macht das.
 const roster = [
-// ===== KONOHA – KONOHA 12 + ERWEITERT =====
-"Naruto Uzumaki","Sasuke Uchiha","Sakura Haruno","Kakashi Hatake",
-"Might Guy","Rock Lee","Neji Hyuga","Tenten","Hinata Hyuga",
-"Kiba Inuzuka","Shino Aburame","Shikamaru Nara","Ino Yamanaka","Choji Akimichi",
-"Asuma Sarutobi","Kurenai Yuhi","Iruka Umino","Ebisu",
-"Konohamaru Sarutobi","Moegi","Udon",
-"Yamato","Sai","Anko Mitarashi","Shizune",
-"Choza Akimichi","Inoichi Yamanaka","Shikaku Nara",
-"Ibiki Morino","Genma Shiranui","Raido Namiashi","Aoba Yamashiro",
-"Kotetsu Hagane","Izumo Kamizuki",
-
-
-// ===== LEGENDEN & HOKAGE =====
-"Hashirama Senju","Tobirama Senju","Hiruzen Sarutobi","Minato Namikaze",
-"Kushina Uzumaki","Tsunade","Jiraiya","Orochimaru",
-"Danzo Shimura","Sakumo Hatake","Mito Uzumaki",
-
-
-// ===== UCHIHA CLAN =====
-"Itachi Uchiha","Madara Uchiha","Obito Uchiha","Shisui Uchiha",
-"Izuna Uchiha","Fugaku Uchiha",
-
-
-// ===== AKATSUKI =====
-"Pain (Nagato)","Konan","Yahiko",
-"Kisame Hoshigaki","Deidara","Sasori","Hidan","Kakuzu",
-"Zetsu","Black Zetsu","White Zetsu",
-
-
-// ===== SAND VILLAGE (SUNAGAKURE) =====
-"Gaara","Kankuro","Temari","Rasa","Chiyo","Ebizo",
-
-
-// ===== CLOUD VILLAGE (KUMOGAKURE) =====
-"A (Fourth Raikage)","Killer Bee","Darui","Cee","Omoi","Karui",
-"Atsui","Samui",
-
-
-// ===== STONE VILLAGE (IWAGAKURE) =====
-"Onoki","Mu","Kurotsuchi","Akatsuchi",
-
-
-// ===== MIST VILLAGE (KIRIGAKURE) =====
-"Mei Terumi","Yagura","Ao","Chojuro",
-"Zabuza Momochi","Haku",
-"Mangetsu Hozuki","Suigetsu Hozuki","Ameyuri Ringo",
-
-
-// ===== SOUND / OROCHIMARU =====
-"Kabuto Yakushi","Kimimaro","Jugo","Karin",
-"Tayuya","Kidomaru","Sakon","Ukon",
-"Dosu Kinuta","Zaku Abumi","Kin Tsuchi",
-
-
-// ===== SWORDS / SAMURAI =====
-"Mifune",
-
-
-// ===== JINCHURIKI (NICHT BORUTO) =====
-"Yugito Nii","Roshi","Han","Utakata","Fuu","Yagura",
-
-
-// ===== ROOT / ANBU =====
-"Torune","Fu Yamanaka","Sai (Anbu)",
-"Yugao Uzuki",
-
-
-// ===== ROGUE / MISC =====
-"Haku","Zabuza Momochi",
-"Ginkaku","Kinkaku",
-"Jirobo","Tobirama Senju (Young)",
-"Fukasaku","Shima",
-
-
-// ===== MOVIE / SIDE CANON (SHIPPUDEN ERA) =====
-"Shinnō","Haido","Mukade","Satori"
+  "Naruto Uzumaki","Sasuke Uchiha","Sakura Haruno","Kakashi Hatake",
+  "Might Guy","Rock Lee","Neji Hyuga","Tenten","Hinata Hyuga",
+  "Kiba Inuzuka","Shino Aburame","Shikamaru Nara","Ino Yamanaka","Choji Akimichi",
+  "Asuma Sarutobi","Kurenai Yuhi","Iruka Umino","Jiraiya","Tsunade","Orochimaru",
+  "Hiruzen Sarutobi","Minato Namikaze","Kushina Uzumaki","Danzo Shimura","Yamato","Sai",
+  "Itachi Uchiha","Madara Uchiha","Obito Uchiha","Shisui Uchiha",
+  "Pain (Nagato)","Konan","Kisame Hoshigaki","Deidara","Sasori","Hidan","Kakuzu","Zetsu",
+  "Gaara","Kankuro","Temari","A (Fourth Raikage)","Killer Bee","Darui",
+  "Onoki","Mei Terumi","Kabuto Yakushi","Suigetsu Hozuki","Karin","Jugo","Kimimaro",
+  "Haku","Zabuza Momochi","Hashirama Senju","Tobirama Senju","Black Zetsu","White Zetsu"
+];
 
 // ======= SETTINGS =======
 const SLOTS = [
@@ -96,13 +31,16 @@ function emptySlotsObj(){
 }
 
 // ======= STATE =======
-let pool, turn, teamA, teamB;
+let pool = [];
+let turn = "A"; // A starts
+let teamA = {};
+let teamB = {};
 
 function resetMatch(){
-  pool = [...roster];           // globaler Pool
-  turn = "A";                   // A startet
-  teamA = { currentDraw: null, rerollUsed: false, ready: false, slots: emptySlotsObj() };
-  teamB = { currentDraw: null, rerollUsed: false, ready: false, slots: emptySlotsObj() };
+  pool = [...roster];
+  turn = "A";
+  teamA = { currentDraw: null, rerollUsed: false, slots: emptySlotsObj() };
+  teamB = { currentDraw: null, rerollUsed: false, slots: emptySlotsObj() };
   renderAll();
   updatePrompt();
 }
@@ -111,7 +49,7 @@ function drawFromPool(){
   if (pool.length === 0) return null;
   const i = Math.floor(Math.random() * pool.length);
   const c = pool[i];
-  pool.splice(i, 1); // remove => no duplicates
+  pool.splice(i, 1);
   return c;
 }
 
@@ -125,8 +63,7 @@ function allFilled(team){
 function draw(which){
   if (turn !== which) return alert(`Du bist nicht dran. Turn ist Team ${turn}.`);
   const t = getTeam(which);
-  if (t.currentDraw) return;
-  if (t.ready) t.ready = false;
+  if (t.currentDraw) return; // already drawn
 
   const c = drawFromPool();
   if (!c) return alert("Pool leer.");
@@ -138,11 +75,12 @@ function reroll(which){
   if (turn !== which) return alert(`Du bist nicht dran. Turn ist Team ${turn}.`);
   const t = getTeam(which);
   if (!t.currentDraw) return;
-  if (t.rerollUsed) return alert("Reroll schon benutzt (1x pro Match).");
+  if (t.rerollUsed) return alert("Reroll schon benutzt (1x pro Team).");
 
-  // Reroll = BAN: currentDraw bleibt weg und kommt nicht zurück in den Pool
+  // Reroll = ban current draw (stays removed)
   t.rerollUsed = true;
-  t.currentDraw = null;          // wichtig!
+  t.currentDraw = null;
+
   const c = drawFromPool();
   if (!c) return alert("Pool leer.");
   t.currentDraw = c;
@@ -158,18 +96,10 @@ function assign(which, slotKey){
 
   t.slots[slotKey] = t.currentDraw;
   t.currentDraw = null;
-  t.ready = false;
-  renderAll();
-}
 
-function ready(which){
-  if (turn !== which) return alert(`Du bist nicht dran. Turn ist Team ${turn}.`);
-  const t = getTeam(which);
-  if (t.currentDraw) return alert("Erst Assignen, dann Ready.");
-  t.ready = true;
-
-  // Turn wechseln
+  // TURN WECHSEL AUTOMATISCH NACH ASSIGN
   turn = (turn === "A") ? "B" : "A";
+
   renderAll();
   updatePrompt();
 }
@@ -189,6 +119,7 @@ Regeln:
 - Prime Forms ✅
 - Edo Tensei ❌
 - Beide Teams sind "alive" Versionen (kein Edo)
+- Beziehe Team-Synergien, Rollen (Leader, Tank, Healer) und bekannte Lore-Feats mit ein.
 
 Gib aus:
 - Gewinner (Team A oder Team B)
@@ -202,7 +133,7 @@ ${formatTeam("B", teamB)}
 }
 
 function updatePrompt(){
-  const ok = allFilled(teamA) && allFilled(teamB) && teamA.ready && teamB.ready;
+  const ok = allFilled(teamA) && allFilled(teamB);
   const btn = document.getElementById("copyPromptBtn");
   btn.disabled = !ok;
 
@@ -230,42 +161,47 @@ function renderTeam(which){
 }
 
 function renderAll(){
+  // Falls IDs fehlen (wenn HTML geändert), bricht sonst alles ab => wir prüfen kurz
+  const must = ["turnLabel","poolLeft","drawBtnA","rerollBtnA","drawBtnB","rerollBtnB","slotsA","slotsB","copyPromptBtn","promptBox","drawA","drawB","rerollA","rerollB"];
+  for (const id of must){
+    if (!document.getElementById(id)){
+      console.error("Missing element id:", id);
+      return;
+    }
+  }
+
   document.getElementById("turnLabel").innerText = `Team ${turn}`;
   document.getElementById("poolLeft").innerText = String(pool.length);
 
-  // Buttons enable/disable
   const aActive = turn === "A";
   const bActive = turn === "B";
 
-  document.getElementById("drawBtnA").disabled = !aActive || !!teamA.currentDraw || teamA.ready || pool.length === 0;
+  document.getElementById("drawBtnA").disabled = !aActive || !!teamA.currentDraw || pool.length === 0;
   document.getElementById("rerollBtnA").disabled = !aActive || !teamA.currentDraw || teamA.rerollUsed;
-  document.getElementById("readyBtnA").disabled = !aActive || !!teamA.currentDraw;
 
-  document.getElementById("drawBtnB").disabled = !bActive || !!teamB.currentDraw || teamB.ready || pool.length === 0;
+  document.getElementById("drawBtnB").disabled = !bActive || !!teamB.currentDraw || pool.length === 0;
   document.getElementById("rerollBtnB").disabled = !bActive || !teamB.currentDraw || teamB.rerollUsed;
-  document.getElementById("readyBtnB").disabled = !bActive || !!teamB.currentDraw;
 
   renderTeam("A");
   renderTeam("B");
 }
 
-// ======= EVENTS =======
-document.getElementById("drawBtnA").addEventListener("click", () => draw("A"));
-document.getElementById("rerollBtnA").addEventListener("click", () => reroll("A"));
-document.getElementById("readyBtnA").addEventListener("click", () => ready("A"));
+// ======= EVENTS (nach DOM load) =======
+window.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("drawBtnA").addEventListener("click", () => draw("A"));
+  document.getElementById("rerollBtnA").addEventListener("click", () => reroll("A"));
 
-document.getElementById("drawBtnB").addEventListener("click", () => draw("B"));
-document.getElementById("rerollBtnB").addEventListener("click", () => reroll("B"));
-document.getElementById("readyBtnB").addEventListener("click", () => ready("B"));
+  document.getElementById("drawBtnB").addEventListener("click", () => draw("B"));
+  document.getElementById("rerollBtnB").addEventListener("click", () => reroll("B"));
 
-document.getElementById("resetBtn").addEventListener("click", resetMatch);
+  document.getElementById("resetBtn").addEventListener("click", resetMatch);
 
-document.getElementById("copyPromptBtn").addEventListener("click", () => {
-  const box = document.getElementById("promptBox");
-  box.select();
-  document.execCommand("copy");
-  alert("Prompt kopiert! In ChatGPT einfügen ✅");
+  document.getElementById("copyPromptBtn").addEventListener("click", () => {
+    const box = document.getElementById("promptBox");
+    box.select();
+    document.execCommand("copy");
+    alert("Prompt kopiert! In ChatGPT einfügen ✅");
+  });
+
+  resetMatch();
 });
-
-// Start
-resetMatch();
