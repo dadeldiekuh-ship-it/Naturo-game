@@ -2,17 +2,82 @@
 // Du kannst hier deine große Naruto-Liste einfügen.
 // Wichtig: Nur Naruto/Shippuden, Boruto nein, Edo nein (Regel im Prompt).
 const roster = [
-  "Naruto Uzumaki","Sasuke Uchiha","Sakura Haruno","Kakashi Hatake",
-  "Might Guy","Rock Lee","Neji Hyuga","Tenten","Hinata Hyuga",
-  "Kiba Inuzuka","Shino Aburame","Shikamaru Nara","Ino Yamanaka","Choji Akimichi",
-  "Asuma Sarutobi","Kurenai Yuhi","Iruka Umino","Jiraiya","Tsunade","Orochimaru",
-  "Hiruzen Sarutobi","Minato Namikaze","Kushina Uzumaki","Danzo Shimura","Yamato","Sai",
-  "Itachi Uchiha","Madara Uchiha","Obito Uchiha","Shisui Uchiha",
-  "Pain (Nagato)","Konan","Kisame Hoshigaki","Deidara","Sasori","Hidan","Kakuzu","Zetsu",
-  "Gaara","Kankuro","Temari","A (Fourth Raikage)","Killer Bee","Darui",
-  "Onoki","Mei Terumi","Kabuto Yakushi","Suigetsu Hozuki","Karin","Jugo","Kimimaro",
-  "Haku","Zabuza Momochi","Hashirama Senju","Tobirama Senju","Black Zetsu","White Zetsu"
-];
+// ===== KONOHA – KONOHA 12 + ERWEITERT =====
+"Naruto Uzumaki","Sasuke Uchiha","Sakura Haruno","Kakashi Hatake",
+"Might Guy","Rock Lee","Neji Hyuga","Tenten","Hinata Hyuga",
+"Kiba Inuzuka","Shino Aburame","Shikamaru Nara","Ino Yamanaka","Choji Akimichi",
+"Asuma Sarutobi","Kurenai Yuhi","Iruka Umino","Ebisu",
+"Konohamaru Sarutobi","Moegi","Udon",
+"Yamato","Sai","Anko Mitarashi","Shizune",
+"Choza Akimichi","Inoichi Yamanaka","Shikaku Nara",
+"Ibiki Morino","Genma Shiranui","Raido Namiashi","Aoba Yamashiro",
+"Kotetsu Hagane","Izumo Kamizuki",
+
+
+// ===== LEGENDEN & HOKAGE =====
+"Hashirama Senju","Tobirama Senju","Hiruzen Sarutobi","Minato Namikaze",
+"Kushina Uzumaki","Tsunade","Jiraiya","Orochimaru",
+"Danzo Shimura","Sakumo Hatake","Mito Uzumaki",
+
+
+// ===== UCHIHA CLAN =====
+"Itachi Uchiha","Madara Uchiha","Obito Uchiha","Shisui Uchiha",
+"Izuna Uchiha","Fugaku Uchiha",
+
+
+// ===== AKATSUKI =====
+"Pain (Nagato)","Konan","Yahiko",
+"Kisame Hoshigaki","Deidara","Sasori","Hidan","Kakuzu",
+"Zetsu","Black Zetsu","White Zetsu",
+
+
+// ===== SAND VILLAGE (SUNAGAKURE) =====
+"Gaara","Kankuro","Temari","Rasa","Chiyo","Ebizo",
+
+
+// ===== CLOUD VILLAGE (KUMOGAKURE) =====
+"A (Fourth Raikage)","Killer Bee","Darui","Cee","Omoi","Karui",
+"Atsui","Samui",
+
+
+// ===== STONE VILLAGE (IWAGAKURE) =====
+"Onoki","Mu","Kurotsuchi","Akatsuchi",
+
+
+// ===== MIST VILLAGE (KIRIGAKURE) =====
+"Mei Terumi","Yagura","Ao","Chojuro",
+"Zabuza Momochi","Haku",
+"Mangetsu Hozuki","Suigetsu Hozuki","Ameyuri Ringo",
+
+
+// ===== SOUND / OROCHIMARU =====
+"Kabuto Yakushi","Kimimaro","Jugo","Karin",
+"Tayuya","Kidomaru","Sakon","Ukon",
+"Dosu Kinuta","Zaku Abumi","Kin Tsuchi",
+
+
+// ===== SWORDS / SAMURAI =====
+"Mifune",
+
+
+// ===== JINCHURIKI (NICHT BORUTO) =====
+"Yugito Nii","Roshi","Han","Utakata","Fuu","Yagura",
+
+
+// ===== ROOT / ANBU =====
+"Torune","Fu Yamanaka","Sai (Anbu)",
+"Yugao Uzuki",
+
+
+// ===== ROGUE / MISC =====
+"Haku","Zabuza Momochi",
+"Ginkaku","Kinkaku",
+"Jirobo","Tobirama Senju (Young)",
+"Fukasaku","Shima",
+
+
+// ===== MOVIE / SIDE CANON (SHIPPUDEN ERA) =====
+"Shinnō","Haido","Mukade","Satori"
 
 // ======= SETTINGS =======
 const SLOTS = [
