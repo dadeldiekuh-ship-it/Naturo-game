@@ -11,7 +11,7 @@ const roster = [
   "Pain (Nagato)","Konan","Kisame Hoshigaki","Deidara","Sasori","Hidan","Kakuzu","Zetsu",
   "Gaara","Kankuro","Temari","A (Fourth Raikage)","Killer Bee","Darui",
   "Onoki","Mei Terumi","Kabuto Yakushi","Suigetsu Hozuki","Karin","Jugo","Kimimaro",
-  "Haku","Zabuza Momochi","Hashirama Senju","Tobirama Senju","Black Zetsu","White Zetsu"
+  "Haku","Zabuza Momochi","Hashirama Senju","Tobirama Senju","Black Zetsu","White Zetsu","chouza akamichi","Shikaku nara","Oma Chino","choujuru", "ginkaku", "kinkaku", "mei temuri","sakumo hatake","mifune", "
 ];
 
 // ======= SETTINGS =======
