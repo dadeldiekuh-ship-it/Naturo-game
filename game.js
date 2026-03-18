@@ -221,23 +221,16 @@ window.addEventListener("DOMContentLoaded", () => {
     document.execCommand("copy");
     alert("Pokémon-Prompt kopiert! In ChatGPT einfügen ✅");
   });
-
   resetMatch();
   resetPokemonMatch();
-});
-  });
-
-  resetMatch();
 });
 function showTab(tabId, buttonElement) {
   document.querySelectorAll(".tab-content").forEach(tab => {
     tab.classList.remove("active");
   });
-
   document.querySelectorAll(".tab-btn").forEach(btn => {
     btn.classList.remove("active");
   });
-
   document.getElementById(tabId).classList.add("active");
   buttonElement.classList.add("active");
 }
