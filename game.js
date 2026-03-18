@@ -205,3 +205,33 @@ window.addEventListener("DOMContentLoaded", () => {
 
   resetMatch();
 });
+function showTab(tabId, buttonElement) {
+  document.querySelectorAll(".tab-content").forEach(tab => {
+    tab.classList.remove("active");
+  });
+
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  document.getElementById(tabId).classList.add("active");
+  buttonElement.classList.add("active");
+}
+
+let score = 0;
+
+function increaseScore() {
+  const scoreEl = document.getElementById("score");
+  if (!scoreEl) return;
+
+  score++;
+  scoreEl.textContent = score;
+}
+
+function resetScore() {
+  const scoreEl = document.getElementById("score");
+  if (!scoreEl) return;
+
+  score = 0;
+  scoreEl.textContent = score;
+}
