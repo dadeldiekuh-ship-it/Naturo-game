@@ -8,60 +8,83 @@
 </head>
 <body>
 
-<h1>🔥 Naruto Draft Fight (2 Spieler – lokal)</h1>
-
-<div class="topbar">
-  <div><b>Turn:</b> <span id="turnLabel">Team A</span></div>
-  <div><b>Pool übrig:</b> <span id="poolLeft">0</span></div>
-  <div class="btnrow">
-    <button id="resetBtn">Reset Match</button>
-    <button id="copyPromptBtn" disabled>Start Fight (Prompt kopieren)</button>
+  <!-- TAB BUTTONS -->
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="showTab('game1', this)">Naruto Draft Fight</button>
+    <button class="tab-btn" onclick="showTab('game2', this)">Pokemon</button>
   </div>
-</div>
 
-<div class="teams">
-  <!-- TEAM A -->
-  <section class="team">
-    <header class="teamHeader">
-      <h2>Team A</h2>
-      <div class="small">
-        Reroll: <span id="rerollA">✅</span> | Draw: <span id="drawA">—</span>
+  <!-- TAB 1 = DEIN AKTUELLES NARUTO GAME -->
+  <div id="game1" class="tab-content active">
+    <h1>🔥 Naruto Draft Fight (2 Spieler – lokal)</h1>
+
+    <div class="topbar">
+      <div><b>Turn:</b> <span id="turnLabel">Team A</span></div>
+      <div><b>Pool übrig:</b> <span id="poolLeft">0</span></div>
+      <div class="btnrow">
+        <button id="resetBtn">Reset Match</button>
+        <button id="copyPromptBtn" disabled>Start Fight (Prompt kopieren)</button>
       </div>
-    </header>
-
-    <div class="controls">
-      <button id="drawBtnA">Draw</button>
-      <button id="rerollBtnA">Reroll (1x)</button>
-      <span class="hint">Assign: Slot anklicken</span>
     </div>
 
-    <div class="slots" id="slotsA"></div>
-    <button id="readyBtnA" class="readyBtn">Ready</button>
-  </section>
+    <div class="teams">
+      <!-- TEAM A -->
+      <section class="team">
+        <header class="teamHeader">
+          <h2>Team A</h2>
+          <div class="small">
+            Reroll: <span id="rerollA">✅</span> | Draw: <span id="drawA">—</span>
+          </div>
+        </header>
 
-  <!-- TEAM B -->
-  <section class="team">
-    <header class="teamHeader">
-      <h2>Team B</h2>
-      <div class="small">
-        Reroll: <span id="rerollB">✅</span> | Draw: <span id="drawB">—</span>
-      </div>
-    </header>
+        <div class="controls">
+          <button id="drawBtnA">Draw</button>
+          <button id="rerollBtnA">Reroll (1x)</button>
+          <span class="hint">Assign: Slot anklicken</span>
+        </div>
 
-    <div class="controls">
-      <button id="drawBtnB">Draw</button>
-      <button id="rerollBtnB">Reroll (1x)</button>
-      <span class="hint">Assign: Slot anklicken</span>
+        <div class="slots" id="slotsA"></div>
+        <button id="readyBtnA" class="readyBtn">Ready</button>
+      </section>
+
+      <!-- TEAM B -->
+      <section class="team">
+        <header class="teamHeader">
+          <h2>Team B</h2>
+          <div class="small">
+            Reroll: <span id="rerollB">✅</span> | Draw: <span id="drawB">—</span>
+          </div>
+        </header>
+
+        <div class="controls">
+          <button id="drawBtnB">Draw</button>
+          <button id="rerollBtnB">Reroll (1x)</button>
+          <span class="hint">Assign: Slot anklicken</span>
+        </div>
+
+        <div class="slots" id="slotsB"></div>
+        <button id="readyBtnB" class="readyBtn">Ready</button>
+      </section>
     </div>
 
-    <div class="slots" id="slotsB"></div>
-    <button id="readyBtnB" class="readyBtn">Ready</button>
-  </section>
-</div>
+    <h2>Prompt Vorschau</h2>
+    <textarea id="promptBox" readonly placeholder="Wird aktiv, wenn beide Teams voll & ready sind."></textarea>
+  </div>
 
-<h2>Prompt Vorschau</h2>
-<textarea id="promptBox" readonly placeholder="Wird aktiv, wenn beide Teams voll & ready sind."></textarea>
+  <!-- TAB 2 = ZWEITES GAME -->
+  <div id="game2" class="tab-content">
+    <h1>🎮 Second Game</h1>
+    <p>Hier kommt dein zweites Spiel rein.</p>
 
-<script src="game.js"></script>
+    <div class="topbar">
+      <div><b>Punkte:</b> <span id="score">0</span></div>
+      <div class="btnrow">
+        <button onclick="increaseScore()">+1 Punkt</button>
+        <button onclick="resetScore()">Reset Punkte</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
 </body>
 </html>
