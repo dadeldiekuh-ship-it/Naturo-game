@@ -3,18 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Naruto Draft Fight (Local 2P)</title>
+  <title>Naruto Draft Fight + Pokémon Draft Fight</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- TAB BUTTONS -->
   <div class="tab-bar">
-    <button class="tab-btn active" onclick="showTab('game1', this)">Naruto Draft Fight</button>
+    <button class="tab-btn active" onclick="showTab('game1', this)">Naruto</button>
     <button class="tab-btn" onclick="showTab('game2', this)">Pokemon</button>
   </div>
 
-  <!-- TAB 1 = DEIN AKTUELLES NARUTO GAME -->
+  <!-- TAB 1 = NARUTO -->
   <div id="game1" class="tab-content active">
     <h1>🔥 Naruto Draft Fight (2 Spieler – lokal)</h1>
 
@@ -71,90 +70,85 @@
     <textarea id="promptBox" readonly placeholder="Wird aktiv, wenn beide Teams voll & ready sind."></textarea>
   </div>
 
-  <!-- TAB 2 = ZWEITES GAME -->
- <div id="game2" class="tab-content">
-  <h1>⚡ Pokémon Draft Fight (2 Spieler – lokal)</h1>
+  <!-- TAB 2 = POKÉMON -->
+  <div id="game2" class="tab-content">
+    <h1>⚡ Pokémon Draft Fight (2 Spieler – lokal)</h1>
 
-  <div class="topbar">
-    <div><b>Turn:</b> <span id="pokemonTurnLabel">Team A</span></div>
-    <div><b>Pool übrig:</b> <span id="pokemonPoolLeft">151</span></div>
-    <div class="btnrow">
-      <button id="pokemonResetBtn">Reset Match</button>
-      <button id="pokemonCopyPromptBtn" disabled>Start Fight (Prompt kopieren)</button>
+    <div class="topbar">
+      <div><b>Turn:</b> <span id="pokemonTurnLabel">Team A</span></div>
+      <div><b>Pool übrig:</b> <span id="pokemonPoolLeft">151</span></div>
+      <div class="btnrow">
+        <button id="pokemonResetBtn">Reset Match</button>
+        <button id="pokemonCopyPromptBtn" disabled>Start Fight (Prompt kopieren)</button>
+      </div>
     </div>
-  </div>
 
-  <div class="teams">
-    <!-- TEAM A -->
-    <section class="team">
-      <header class="teamHeader">
-        <h2>Team A</h2>
-        <div class="small">
-          6 Pokémon draften
+    <div class="teams">
+      <!-- TEAM A -->
+      <section class="team">
+        <header class="teamHeader">
+          <h2>Team A</h2>
+          <div class="small">6 Pokémon draften</div>
+        </header>
+
+        <div class="controls">
+          <button id="pokemonDrawBtnA">Draw 3 Pokémon</button>
+          <span class="hint">Wähle 1 von 3</span>
         </div>
-      </header>
 
-      <div class="controls">
-        <button id="pokemonDrawBtnA">Draw 3 Pokémon</button>
-        <span class="hint">Wähle 1 von 3</span>
-      </div>
+        <div class="slots" id="pokemonSlotsA"></div>
+      </section>
 
-      <div class="slots" id="pokemonSlotsA"></div>
-    </section>
+      <!-- TEAM B -->
+      <section class="team">
+        <header class="teamHeader">
+          <h2>Team B</h2>
+          <div class="small">6 Pokémon draften</div>
+        </header>
 
-    <!-- TEAM B -->
-    <section class="team">
-      <header class="teamHeader">
-        <h2>Team B</h2>
-        <div class="small">
-          6 Pokémon draften
+        <div class="controls">
+          <button id="pokemonDrawBtnB">Draw 3 Pokémon</button>
+          <span class="hint">Wähle 1 von 3</span>
         </div>
-      </header>
 
-      <div class="controls">
-        <button id="pokemonDrawBtnB">Draw 3 Pokémon</button>
-        <span class="hint">Wähle 1 von 3</span>
-      </div>
+        <div class="slots" id="pokemonSlotsB"></div>
+      </section>
+    </div>
 
-      <div class="slots" id="pokemonSlotsB"></div>
-    </section>
+    <h2>Gezogene Auswahl</h2>
+    <div id="pokemonChoices" class="pokemon-choices">
+      <p class="hint">Noch keine Auswahl gezogen.</p>
+    </div>
+
+    <h2>Kampfreihenfolge</h2>
+    <div class="teams">
+      <section class="team">
+        <header class="teamHeader">
+          <h2>Reihenfolge Team A</h2>
+        </header>
+        <div id="pokemonOrderA" class="pokemon-order">
+          <p class="hint">Wird verfügbar, wenn Team A 6 Pokémon hat.</p>
+        </div>
+      </section>
+
+      <section class="team">
+        <header class="teamHeader">
+          <h2>Reihenfolge Team B</h2>
+        </header>
+        <div id="pokemonOrderB" class="pokemon-order">
+          <p class="hint">Wird verfügbar, wenn Team B 6 Pokémon hat.</p>
+        </div>
+      </section>
+    </div>
+
+    <h2>Prompt Vorschau</h2>
+    <textarea
+      id="pokemonPromptBox"
+      readonly
+      placeholder="Wird aktiv, wenn beide Teams 6 Pokémon haben und die Kampfreihenfolge festgelegt ist."
+    ></textarea>
   </div>
 
-  <h2>Gezogene Auswahl</h2>
-  <div id="pokemonChoices" class="pokemon-choices">
-    <p class="hint">Noch keine Auswahl gezogen.</p>
-  </div>
-
-  <h2>Kampfreihenfolge</h2>
-  <div class="teams">
-    <!-- Reihenfolge Team A -->
-    <section class="team">
-      <header class="teamHeader">
-        <h2>Reihenfolge Team A</h2>
-      </header>
-      <div id="pokemonOrderA" class="pokemon-order">
-        <p class="hint">Wird verfügbar, wenn Team A 6 Pokémon hat.</p>
-      </div>
-    </section>
-
-    <!-- Reihenfolge Team B -->
-    <section class="team">
-      <header class="teamHeader">
-        <h2>Reihenfolge Team B</h2>
-      </header>
-      <div id="pokemonOrderB" class="pokemon-order">
-        <p class="hint">Wird verfügbar, wenn Team B 6 Pokémon hat.</p>
-      </div>
-    </section>
-  </div>
-
-  <h2>Prompt Vorschau</h2>
-  <textarea
-    id="pokemonPromptBox"
-    readonly
-    placeholder="Wird aktiv, wenn beide Teams 6 Pokémon haben und die Kampfreihenfolge festgelegt ist."
-  ></textarea>
-</div>
   <script src="game.js"></script>
 </body>
 </html>
