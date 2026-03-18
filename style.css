@@ -92,3 +92,27 @@ textarea{
   color:#e8e8e8;
   padding:10px;
 }
+.tab-bar{
+  display:flex;
+  gap:10px;
+  margin-bottom:18px;
+  flex-wrap:wrap;
+}
+
+.tab-btn{
+  font-weight:bold;
+}
+
+.tab-btn.active{
+  background:#ff8c00;
+  color:#111;
+  border-color:#ff8c00;
+}
+
+.tab-content{
+  display:none;
+}
+
+.tab-content.active{
+  display:block;
+}
